@@ -2,6 +2,8 @@
 
 **Group Number:** 7
 
+**Teaching Fellow:** Suchen Zheng
+
 **Members:** Trinity Gao, Kevin Jin, Yuntian Liu, Sina Ovali, Esha Sinha, Haley Xiaohe Zhang, Lucy Zheng
 
 **Labor Division**
