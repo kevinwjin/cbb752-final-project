@@ -35,3 +35,6 @@ perl /vast/palmer/apps/avx2/software/VEP/112.0-GCC-12.2.0/INSTALL.pl \
 
 # Calling the ENSEMBL-VEP command 
 vep -i chr22.vcf.gz -o chr22_annotated.vcf --vcf --cache --offline --assembly GRCh37 --everything --fasta /ycga-gpfs/datasets/genomes/Homo_sapiens/Ensembl/GRCh37/Sequence/WholeGenomeFasta/genome.fa
+
+# Used BCFTools to get the top 10 variants
+bcftools view -f PASS chr22_annotated.vcf | bcftools query -f '%INFO/CSQ\n' - | tr ',' '\n' | cut -d '|' -f4 | grep -v '^$' | sort | uniq -c | sort -k1,1nr | head -12 > top_variants.txt
