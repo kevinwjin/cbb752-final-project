@@ -196,7 +196,7 @@ def initalize_gemini_client(api_key):
     client = genai.Client(api_key=api_key) 
     return client
 
-def get_gemini_response(client, prompt, model_name='gemini-2.0-flash', max_output_tokens= 16384, use_grounding_tools=False):
+def get_gemini_response(client, prompt, model_name='gemini-2.0-flash', max_output_tokens= 8192, use_grounding_tools=False):
     """Send the prompt to Google's Gemini API and get a response using the specified model, with optional tools"""
     logging.info(f"Sending prompt to Gemini API using model: {model_name}...")
 
@@ -396,7 +396,7 @@ def main():
     logging.warning("--- CONFIRMATION REQUIRED BEFORE FIRST API CALL (OVERALL SUMMARY) ---")
     logging.warning(f"Model to be used: {args.model}")
     logging.warning(f"Calculated Input Tokens: {summary_token_count}")
-    max_output_tokens_config = 16384
+    max_output_tokens_config = 8192
     logging.warning(f"Maximum Output Tokens Configured: {max_output_tokens_config}")
     
     try:
