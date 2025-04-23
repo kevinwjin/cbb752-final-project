@@ -103,14 +103,17 @@ Process all collected PMC publications for the prioritized genes to integrate th
 
 ```shell
 python llm_mining.py 
+# type gemini-2.0-flash-lite in the terminal when first prompted for model name for the overall summary task
+# type gemini-2.5-flash-preview-04-17 in the terminal when prompted for model name for the comparative analysis task
 ```
 
 This will:
 - Load all the PMC full text articles from `pmc_full_texts/`
-- Generate a prompt embeded with the part II instruction for the overall summary task, stored in `prompts/overall_summary_prompt.txt` (more than 500k tokens estimated)
-- Call the Gemini API use `gemini-2.0-flash-lite` as default model (you can change it to other models according to the need and the limit by retyping the model name in the terminal) to generate the overall summary and save the overall summary to `llm_responses/overall_summary.txt`
-- With the overall summary embeded as the sequential prompt, construct a new prompt and save it to `prompts/comparative_analysis_prompt.txt` for the comparative analysis task with Google search grounding tool, call the Gemini API use `gemini-2.5-flash-preview-04-17` to generate the comparative analysis report and save the report to `llm_responses/comparative_analysis.txt`. (The grounding search results is saved in `llm_responses/comparative_analysis_grounding.json`)
-  - specifically, when asked to type model name in the terminal, first make sure the input and estimated output tokens are within the rate limit, then use `gemini-2.5-flash-preview-04-17`
+- Generate a prompt embeded with the part II instruction for the overall summary task, stored in `prompts/overall_summary_prompt.txt` (more than 500k tokens estimated). Call the Gemini API use the `gemini-2.0-flash-lite` model to generate the overall summary and save the overall summary to `llm_responses/overall_summary.txt`
+- With the overall summary embeded as the sequential prompt, construct a new prompt and save it to `prompts/comparative_analysis_prompt.txt` for the comparative analysis task with Google search grounding tool, call the Gemini API use the `gemini-2.5-flash-preview-04-17` model to generate the comparative analysis report and save the report to `llm_responses/comparative_analysis.txt`. (The grounding search results is saved in `llm_responses/comparative_analysis_grounding.json`)
+
+Note:
+- when asked to type model name in the terminal, first make sure the input and estimated output tokens are within the rate limit
 - You can also find extra information in the logs/ and debug/ subdirectories.
 
 
